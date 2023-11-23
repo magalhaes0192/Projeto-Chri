@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- ... (códigos de link, script, etc.) ... -->
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- ... (códigos de estrutura HTML) ... -->
+
+    <section class="album" id="album">
+        <div class="interface">
+            <h2 class="titulo">LISTA DE ALBUNS </h2>
+            <div class="flex" id="albuns-container">
+                <!-- O conteúdo será inserido aqui dinamicamente com JavaScript -->
+            </div>
+        </div><!-- interface -->
+    </section><!-- album -->
+
+    <!-- ... (mais seções HTML) ... -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const albunsContainer = document.getElementById('albuns-container');
+            const dados = /* Os seus dados JSON vão aqui */;
+
+            // Função para exibir álbuns no DOM
+            function exibirAlbunsNoDOM() {
+                dados.albuns.forEach(album => {
+                    const albumDiv = document.createElement('div');
+                    albumDiv.innerHTML = `
+                        <section class="layout">
+                            <div class="albuns">
+                                <img src="${album.capa}" alt="${album.titulo}">
+                                <h3>${album.titulo}</h3>
+                                <h5>${album.descricao}</h5>  
+                                <button onclick="exibirDetalhes(${album.id})">MAIS DETALHES</button> 
+                            </div>
+                        </section>
+                    `;
+                    albunsContainer.appendChild(albumDiv);
+                });
+            }
+
+            // Função para exibir detalhes de um álbum específico
+            function exibirDetalhes(albumId) {
+                const albumSelecionado = dados.albuns.find(album => album.id === albumId);
+
+                // Limpa o contêiner antes de adicionar os detalhes
+                albunsContainer.innerHTML = '';
+
+                // Cria elementos HTML para os detalhes do álbum selecionado
+                albumSelecionado.itens.forEach(item => {
+                    const detalhesDiv = document.createElement('div');
+                    detalhesDiv.innerHTML = `
+                        <div class="albuns">
+                            <h3>${item.titulo}</h3>
+                            <h5>${item.descricao}</h5>  
+                            <button onclick="exibirDetalhesItem(${item.id})">MAIS DETALHES</button> 
+                        </div>
+                    `;
+                    albunsContainer.appendChild(detalhesDiv);
+                });
+            }
+
+            // Função para exibir detalhes de um item específico
+            function exibirDetalhesItem(itemId) {
+                const itemSelecionado = dados.albuns.flatMap(album => album.itens).find(item => item.id === itemId);
+
+                // Limpa o contêiner antes de adicionar os detalhes
+                albunsContainer.innerHTML = '';
+
+                // Cria elementos HTML para os detalhes do item selecionado
+                const detalhesItemDiv = document.createElement('div');
+                detalhesItemDiv.innerHTML = `
+                    <div class="albuns">
+                        <h3>${itemSelecionado.titulo}</h3>
+                        <h5>${itemSelecionado.descricao}</h5>
+                        <ul>
+                            <li>Rua: ${itemSelecionado.detalhes[0].rua}</li>
+                            <li>Número: ${itemSelecionado.detalhes[0].numero}</li>
+                            <li>Bairro: ${itemSelecionado.detalhes[0].bairro}</li>
+                            <li>Cidade: ${itemSelecionado.detalhes[0].cidade}</li>
+                            <li>Estado: ${itemSelecionado.detalhes[0].estado}</li>
+                            <li>CEP: ${itemSelecionado.detalhes[0].cep}</li>
+                            <li>Ingresso: ${itemSelecionado.detalhes[0].ingresso}</li>
+                        </ul>
+                    </div>
+                `;
+                albunsContainer.appendChild(detalhesItemDiv);
+            }
+
+            // Chama a função para exibir álbuns ao carregar a página
+            exibirAlbunsNoDOM();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/album.css">
+    <link rel="stylesheet" href="/assets/css/slick-album.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="/assets/js/detalhe.js"></script>
+    <script src="/assets/js/jquery.js" defer></script>
+    <script src="/assets/js/jquery-migrate.js" defer></script>
+    <script src="/assets/js/slick.min.js" defer></script>
+    <script src="/assets/js/main.js" defer></script>
+    <script src="/assets/js/menu.js" defer></script>
+
+    <title>Personagens da Marvel</title>
+</head>
+
+<body>
+    <header id="header">
+        <div class="interface">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="/assets/img/logo.png" alt="Logo vinicius">
+                </a>
+            </div><!--logo-->
+
+
+            <div class="btn-abrir-menu" id="btn-menu">
+                <i class="bi bi-list"></i>
+            </div>
+
+            <div class="menu-mobile" id="menu-mobile">
+                <div class="btn-fechar" id="fechar">
+                    <i class="bi bi-x-lg"></i>
+                </div>
+
+                <nav>
+                    <ul>
+                        <li id="sl"><a href="#slide">Destaques</a></li>
+                        <li id="map"><a href="#mapa">Mapa</a></li>
+                        <li id="al"><a href="#album">Lista de Albuns</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="overlay-menu" id="overlay-menu"></div>
+            <nav class="menu-desktop">
+                <ul>
+                    <li><a href="#slide">Destaques</a></li>
+                    <li><a href="#mapa">Mapa</a></li>
+                    <li><a href="#album">Lista de Albuns</a></li>
+                </ul>
+            </nav>
+        </div><!--interface-->
+
+    </header>
+
+    <section class="sobre" id="sobre">
+        <div class="interface">
+            <h2 class="titulo">Descubra a origem dos Personagens da Marvel</h2>
+            <div class="flex">
+                <div class="img-sobre">
+                    <img src="/assets/img/vingadores.jpg" alt="">
+                </div><!--img-sobre-->
+                <div class="txt-sobre">
+                    <h3>Descrição</h3>
+                    <p>Aqui você vai descobrir o lugar de origem de alguns dos heróis mais famosos da marvel</p>
+                    <h3>Localização</h3>
+                    <iframe class="loca"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52864.88325107458!2d-118.40433144079698!3d34.09372624673126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bf07045279bf%3A0xf67a9a6797bdfae4!2sHollywood%2C%20Los%20Angeles%2C%20CA%2C%20EUA!5e0!3m2!1spt-PT!2sbr!4v1695568571030!5m2!1spt-PT!2sbr"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <h3>Data de registro</h3>
+                    <p>24/09/2023</p>
+                </div><!--btn-social-->
+            </div><!--txt-sobre-->
+        </div><!--flex-->
+        </div><!--interface-->
+    </section><!--sobre-->
+
+    <section class="album" id="album">
+        <div class="interface">
+            <h2 class="titulo">Heróis</h2>
+            <div class="flex">
+                <section class="layout">
+                    <div class="albuns"><img src="/assets/img/listavitrine-1210x544.webp" alt="foto">
+                        <h3>Homem Aranha</h3>
+                        <h5>Queens, NY</h5>
+                        <a href="#morumbi" onclick="abrirModal()"><button>MAIS DETALHES</button></a>
+                    </div>
+                    <div class="albuns"><img src="/assets/img/hulk[.jpg" alt="foto">
+                        <h3>Hulk</h3>
+                        <h5>Dayton, OHIO</h5>
+                        <a href="#vila" onclick="abrirModalVila()"><button>MAIS DETALHES</button></a>
+                    </div>
+                    <div class="albuns"><img src="/assets/img/tony-stark-1210x540.webp" alt="foto">
+                        <h3>Homem de Ferro</h3>
+                        <h5>Malibu, CA</h5>
+                        <a href="#mineiro" onclick="abrirModalMineiro()"><button>MAIS DETALHES</button></a>
+                    </div>
+                    <div class="albuns"><img src="/assets/img/wanda.webp" alt="foto">
+                        <h3>Feiticeira Scarlat</h3>
+                        <h5>Sokovia, Russia</h5>
+                        <a href="#arena" onclick="abrirModalArena()"><button>MAIS DETALHES</button></a>
+                    </div>
+
+                </section>
+
+            </div><!--flex-->
+        </div><!--interface-->
+    </section><!--album-->
+
+    <div class="interface">
+        <div class="modal" id="morumbi">
+            <h1 class="morumbi">Homem Aranha</h1>
+            <i class="bi bi-x-lg" id="close"></i>
+            <div class="col-100">
+                <div class="slider-principal">
+                    <img src="/assets/img/listavitrine-1210x544.webp" alt="">
+                    <img src="/assets/img/homem-aranha-14.jpg" alt="">
+                    <img src="/assets/img/Espetacular_Homem-Aranha.webp" alt="">
+                    <img src="/assets/img/aranha.jpg" alt="">
+                </div>
+
+            </div>]
+            <div class="mapa">
+                <iframe class="loca"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48407.35831420239!2d-74.01547658840423!3d40.6858679927297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24369470a592b%3A0x4109d18b6c5c7b05!2sQueens%2C%20NY%2C%20EUA!5e0!3m2!1spt-PT!2sbr!4v1695569404616!5m2!1spt-PT!2sbr"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="local">
+                    <h3>Localização</h3>
+                    <p>Queens, NY</p>
+                    <h3>História de origem</h3>
+                    <p>Qual é a verdadeira origem do Homem-Aranha?
+                        Homem-Aranha – Wikipédia, a enciclopédia livre
+                        Em 1962, com o sucesso do Quarteto Fantástico, Stan Lee lançou a ideia de um novo super-herói.
+                        Ele afirmou que a ideia do Homem-Aranha surgiu com o aumento do interesse de adolescentes em
+                        quadrinhos e com o desejo de criar um personagem com quem os jovens pudessem se identificar.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="interface">
+        <div class="modal" id="vila">
+            <h1 class="morumbi">Hulk</h1>
+            <i class="bi bi-x-lg" id="close"></i>
+            <div class="col-100">
+                <div class="slider-principal">
+                    <img src="/assets/img/hulk[.jpg" alt="">
+                    <img src="/assets/img/hulk-nerd-1.webp" alt="">
+                    <img src="/assets/img/hulk_thor_ragnarok_reproducao_widelg.jpg" alt="">
+                    <img src="/assets/img/Avengers_Infinity_War_poster_022_Textless.webp" alt="">
+                </div>
+
+            </div>
+            <div class="mapa">
+                <iframe class="loca"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49067.23016524855!2d-84.20641041670348!3d39.76880128200107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x884080d5aedd1403%3A0xa640e392f20e4ce4!2sDayton%2C%20OH%2C%20EUA!5e0!3m2!1spt-PT!2sbr!4v1695569562368!5m2!1spt-PT!2sbr"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="local">
+                    <h3>Localização</h3>
+                    <p>Dayton, OHIO</p>
+                    <h3>História de Origem</h3>
+                    <p>O alter-ego de Hulk é o cientista Bruce Banner, filho de Brian e Rebecca Banner. Brian, no
+                        entanto, sentia muito ciúmes do próprio filho e batia nele com frequência, principalmente quando
+                        bebia. Em um ataque de fúria extremo, acabou matando a própria esposa e foi preso. Bruce então,
+                        foi morar com a tia, Susan Banner.
+                        Ainda criança, o garoto se apresentou como um prodígio, graças a sua inteligência. Mais tarde,
+                        acabou estudando física nuclear no ensino superior e se especializou em radiação gama.
+                        Graças ao seu conhecimento, foi trabalhar no Departamento de Defesa Nuclear dos EUA. Foi nas
+                        pesquisas militares na base que conheceu seu grande amor, Betty Ross, e desenvolveu a bomba de
+                        raios gama que mudou sua vida.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="interface">
+        <div class="modal" id="mineiro">
+            <h1 class="morumbi">Homem de Ferro</h1>
+            <i class="bi bi-x-lg" id="close"></i>
+            <div class="col-100">
+                <div class="slider-principal">
+                    <img src="/assets/img/tony-stark-1210x540.webp" alt="">
+                    <img src="/assets/img/iron.jpg" alt="">
+                    <img src="/assets/img/Tony-Stark-Homem-de-Ferro.jpg" alt="">
+                    <img src="/assets/img/homem-de-ferro.jpg" alt="">
+                </div>
+
+            </div>]
+            <div class="mapa">
+                <iframe class="loca"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105804.88796172226!2d-118.83677595219648!3d34.03353855345563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80e81da9f908d63f%3A0x93b72d71b2ea8c5a!2sMalibu%2C%20CA%2C%20EUA!5e0!3m2!1spt-PT!2sbr!4v1695569934467!5m2!1spt-PT!2sbr"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="local">
+                    <h3>Localização</h3>
+                    <p>Malibu, CA</p>
+                    <h3>História de Origem</h3>
+                    <p>Com poucos anos de trabalho, Tony transformou a empresa num gigante complexo bilionário.
+                        Trabalhando principalmente com investimento em armamento e munições, ele acabou fazendo parte de
+                        uma apresentação no Vietnã.
+                        Durante o conflito militar no país, Tony acabou sendo vítima de um ataque de granada, mas
+                        sobreviveu. Apesar disso, ficou com estilhaços de explosivo próximos ao seu coração. Ao mesmo
+                        tempo, ele fora feito prisioneiro e forçado a desenvolver uma arma.
+                        Mas, ao invés de desenvolver a arma para seu sequestrador, Tony acabou criando um dispositivo
+                        que o mantivesse vivo. Logo após garantir sua sobrevivência, também criou a primeira versão da
+                        armadura do Homem de Ferro e escapou.
+                        Desde então, Tony aperfeiçoou e desenvolveu novas versões da armadura, sempre com destaque para
+                        cores vermelho e dourado. Durante o início de suas aventuras, Tony Stark dizia que o Homem de
+                        Ferro era seu guarda-costas. Na época, apenas sua secretária, Virginia “Pepper” Potts, e Harold
+                        “Happy” Hogan conheciam seu segredo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="interface">
+        <div class="modal" id="arena">
+            <h1 class="morumbi">Wanda</h1>
+            <i class="bi bi-x-lg" id="close"></i>
+            <div class="col-100">
+                <div class="slider-principal">
+                    <img src="/assets/img/wanda.webp" alt="">
+                    <img src="/assets/img/wanda_maximoff_con_legal_7b336fbe.jpeg" alt="">
+                    <img src="/assets/img/wanda_maximoff_power_9b90b64f.jpeg" alt="">
+                    <img src="/assets/img/feiticeira-escarlate-mercurio-e1603715464633-890x464.jpg" alt="">
+                </div>
+
+            </div>]
+            <div class="mapa">
+                <iframe class="loca"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d783714.2526429709!2d99.75633961508095!3d67.44007337757292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x453c569a896724fb%3A0x1409fdf86611f613!2zUsO6c3NpYQ!5e0!3m2!1spt-PT!2sbr!4v1695570228831!5m2!1spt-PT!2sbr"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="local">
+                    <h3>Localização</h3>
+                    <p>Sokovia, Rússia</p>
+                    <h3>História de Origem</h3>
+                    <p>É considerável que a Marvel fez uma mudança na origem dos personagens devido a uma disputa
+                        contratual com os direitos do X-men com a FOX. Onde qualquer personagem que se enquadre como
+                        mutante poderia ser usado pelo estúdio para alguma produção Live Action, já a Marvel pelo
+                        contrário, não poderia usar nenhuma citação ao X-men ou mutantes. Devido a esta linha contratual
+                        dos personagens entre mutantes e não mutantes, ficou estabelecido que os dois estúdios poderiam
+                        usar os gêmeos desde que a Marvel não os colocasse como mutantes, o que terminou com a compra da
+                        Fox pela Disney. Agora o estúdio poder usar todos personagens mutantes e outros livremente.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="interface">
+            <h2 class="credit">CRÉDITOS </h2>
+            <div class="flex">
+                <section class="footer">
+                    <div class="albuns">
+                        <h3>Sobre</h3>
+                        <p class="sobre">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry' s standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            It has
+                            survived not only five centuries, but also the leap into electronic typesetting, remaining
+                            essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                            containing Lorem Ipsum passages, and more recently with desktop publishing software like
+                            Aldus
+                            PageMaker including versions of Lorem Ipsum.</p>
+                    </div>
+                    <div class="albuns">
+                        <h3>Autoria</h3>
+                        <ul class="ul">
+                            <li><img src="/assets/img/pessoa.jpg" alt=""></li>
+                            <li class="autoria">
+                                <p class="li"><span>Aluno:</span> Gustavo Chagas Ribeiro</p>
+                                <p class="li"><span>Curso:</span> Engenharia de software</p>
+                            </li>
+                        </ul>
+                        <ul class="ul1">
+                            <li>
+                                <h3>Redes Sociais:</h3>
+                            </li>
+                            <li class="btn-social" style="margin-left: 20px;"><a href="#"><button><i
+                                            class="bi bi-instagram"></i></button></a></li>
+                            <li class="btn-social"><a href="#"><button><i class="bi bi-twitter"></i></button></a></li>
+                            <li class="btn-social"><a href="#"><button><i class="bi bi-linkedin"></i></button></a></li>
+                        </ul>
+                    </div>
+                </section>
+            </div><!--flex-->
+        </div><!--interface-->
+    </footer><!--footer-->
+</body>
+
+</html>
