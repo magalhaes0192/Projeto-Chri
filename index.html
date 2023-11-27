@@ -81,8 +81,8 @@
             <h2 class="titulo">MAPA</h2>
             <div class="flex">
                 <iframe class="mapas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d120048.59795757699!2d-44.04662274608247!3d-19.90253583914758!2m3!1f0!2f0!3f0!3m2!11024!2768!4f13.1!3m3!1m2!1s0xa690cacacf2c33%3A0×5b357953ad23997!2Belo%20Horizonte%2C%20MG!50!3m2!1spt-
-                BR!2sbr!4v1694258462357!5m2!1spt-BR!2sbr" width="800" height="250" style="border:O;"
-                    allowfullscreen='' loading="lazy" referrerpolicy="no-referrer-when-downgrade" frameborder="0"></iframe>
+                BR!2sbr!4v1694258462357!5m2!1spt-BR!2sbr" width="800" height="250" style="border:O;" allowfullscreen=''
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade" frameborder="0"></iframe>
             </div><!--flex-->
         </div><!--interface-->
     </section><!--mapa-->
@@ -91,29 +91,10 @@
         <div class="interface">
             <h2 class="titulo">LISTA DE ALBUNS </h2>
             <div class="flex">
-                <section class="layout">
-                    <div class="albuns"><img src="/assets/img/estadio.jpg" alt="foto">
-                        <h3>Estádios de Futebol</h3>
-                        <h5>Os estádios mais famosos do Brasil</h5>  
-                        <a href="estadio.html"><button>MAIS DETALHES</button></a> 
-                    </div>
-                    <div class="albuns"><img src="/assets/img/viagem.jpg" alt="foto">
-                        <h3>Locais de Viagem</h3>
-                        <h5>As paisagem mais famosas do Brasil</h5>  
-                        <a href="viagem.html"><button>MAIS DETALHES</button></a> 
-                    </div>
-                    <div class="albuns"><img src="/assets/img/marvel.jpg" alt="foto">
-                        <h3>Personagens Marvel</h3>
-                        <h5>Os personagens mais fomosos da Marvel</h5>  
-                        <a href="marvel.html"><button>MAIS DETALHES</button></a> 
-                    </div>
-                    <div class="albuns"><img src="/assets/img/diversao.jpg" alt="foto">
-                        <h3>Parques de diversão</h3>
-                        <h5>Os melhores parques de diversão do Brasil</h5>  
-                        <a href="diversao.html"><button>MAIS DETALHES</button></a> 
-                    </div>
+                <section class="layout" id="album-container">
 
-                  </section>
+
+                </section>
 
             </div><!--flex-->
         </div><!--interface-->
@@ -122,40 +103,83 @@
     <footer>
         <div class="interface">
             <h2 class="credit">CRÉDITOS </h2>
-                <div class="flex">
-                    <section class="footer">
-                        <div class="albuns">
-                            <h3>Sobre</h3>
-                            <p class="sobre">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry' s standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
-                    survived not only five centuries, but also the leap into electronic typesetting, remaining
-                    essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-                    containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-                    PageMaker including versions of Lorem Ipsum.</p>
-            </div>
-            <div class="albuns">
-                <h3>Autoria</h3>
-                <ul class="ul">
-                    <li><img src="/assets/img/pessoa.jpg" alt=""></li>
-                    <li class="autoria">
-                        <p class="li"><span>Aluno:</span> Gustavo Chagas Ribeiro</p>
-                        <p class="li"><span>Curso:</span> Engenharia de software</p>
-                    </li>
-                </ul>
-                <ul class="ul1">
-                    <li>
-                        <h3>Redes Sociais:</h3>
-                    </li>
-                    <li class="btn-social" style="margin-left: 20px;"><a href="#"><button><i
-                                    class="bi bi-instagram"></i></button></a></li>
-                    <li class="btn-social"><a href="#"><button><i class="bi bi-twitter"></i></button></a></li>
-                    <li class="btn-social"><a href="#"><button><i class="bi bi-linkedin"></i></button></a></li>
-                </ul>
-            </div>
-    </section>
-    </div><!--flex-->
-    </div><!--interface-->
+            <div class="flex">
+                <section class="footer">
+                    <div class="albuns">
+                        <h3>Sobre</h3>
+                        <p class="sobre">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry' s standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            It has
+                            survived not only five centuries, but also the leap into electronic typesetting, remaining
+                            essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                            containing Lorem Ipsum passages, and more recently with desktop publishing software like
+                            Aldus
+                            PageMaker including versions of Lorem Ipsum.</p>
+                    </div>
+                    <div class="albuns">
+                        <h3>Autoria</h3>
+                        <ul class="ul">
+                            <li><img src="/assets/img/pessoa.jpg" alt=""></li>
+                            <li class="autoria">
+                                <p class="li"><span>Aluno:</span> Gustavo Chagas Ribeiro</p>
+                                <p class="li"><span>Curso:</span> Engenharia de software</p>
+                            </li>
+                        </ul>
+                        <ul class="ul1">
+                            <li>
+                                <h3>Redes Sociais:</h3>
+                            </li>
+                            <li class="btn-social" style="margin-left: 20px;"><a href="#"><button><i
+                                            class="bi bi-instagram"></i></button></a></li>
+                            <li class="btn-social"><a href="#"><button><i class="bi bi-twitter"></i></button></a></li>
+                            <li class="btn-social"><a href="#"><button><i class="bi bi-linkedin"></i></button></a></li>
+                        </ul>
+                    </div>
+                </section>
+            </div><!--flex-->
+        </div><!--interface-->
     </footer><!--footer-->
+
+    <script>
+        // Função para fazer a requisição assíncrona
+        async function fetchAlbums() {
+            try {
+                // Substitua 'caminho/do/seu/arquivo/db.json' pelo caminho real do seu arquivo JSON
+                const response = await fetch('http://localhost:3000/albuns');
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Erro ao carregar os dados do arquivo JSON:', error);
+            }
+        }
+
+        // Função para renderizar os álbuns na div 'albuns'
+        async function renderAlbums() {
+            const albumContainer = document.getElementById('album-container');
+            const albumsData = await fetchAlbums();
+
+            if (albumsData) {
+                albumsData.forEach(album => {
+                    // Criar elementos HTML para cada álbum
+                    const albumElement = document.createElement('div');
+                    albumElement.classList.add('albuns');
+                    albumElement.innerHTML = `
+                    <img src="${album.capa}" alt="${album.titulo}">
+                    <h3>${album.titulo}</h3>
+                    <h5>${album.descricao}</h5>
+                    <a href="${album.detalhes.href || '#'}"><button>${album.detalhes.buttonText}</button></a>
+                    `;
+
+                    // Adicionar o elemento do álbum à div 'albuns'
+                    albumContainer.appendChild(albumElement);
+                });
+            }
+        }
+
+        // Chamar a função para renderizar os álbuns quando a página carregar
+        window.onload = renderAlbums;
+    </script>
 
 </body>
 
