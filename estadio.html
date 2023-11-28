@@ -84,28 +84,7 @@
         <div class="interface">
             <h2 class="titulo">LISTA DE ESTÁDIOS </h2>
             <div class="flex">
-                <section class="layout">
-                    <div class="albuns"><img src="/assets/img/morumbi.jpg" alt="foto">
-                        <h3>Morumbi</h3>
-                        <h5>Estádio do São Paulo</h5>
-                        <a href="#morumbi" onclick="abrirModal()"><button>MAIS DETALHES</button></a>
-                    </div>
-                    <div class="albuns"><img src="/assets/img/vila.jpg" alt="foto">
-                        <h3>Vila Belmiro</h3>
-                        <h5>Estádio do Santos</h5>
-                        <a href="#vila" onclick="abrirModalVila()"><button>MAIS DETALHES</button></a>
-                    </div>
-                    <div class="albuns"><img src="/assets/img/mineirao-largejpg.jpg" alt="foto">
-                        <h3>Mineirão</h3>
-                        <h5>Estádio do Cruzeiro</h5>
-                        <a href="#mineiro" onclick="abrirModalMineiro()"><button>MAIS DETALHES</button></a>
-                    </div>
-                    <div class="albuns"><img src="/assets/img/Estadio-Atletico-Paranaense-Aerea.jpg" alt="foto">
-                        <h3>Arena da Baixada</h3>
-                        <h5>Estádio do athletico paranaense</h5>
-                        <a href="#arena" onclick="abrirModalArena()"><button>MAIS DETALHES</button></a>
-                    </div>
-
+                <section class="layout" id="album-container">
                 </section>
 
             </div><!--flex-->
@@ -124,7 +103,7 @@
                     <img src="/assets/img/morumbi.webp" alt="">
                 </div>
 
-            </div>]
+            </div>
             <div class="mapa">
                 <iframe class="loca"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.0927120908123!2d-46.72490494835503!3d-23.601007724206617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce56c31b1fe649%3A0x7d134f4dfc6618c2!2sEst%C3%A1dio%20do%20Morumbi!5e0!3m2!1spt-PT!2sbr!4v1695547004126!5m2!1spt-PT!2sbr"
@@ -281,6 +260,53 @@
             </div><!--flex-->
         </div><!--interface-->
     </footer><!--footer-->
+
+    <script>
+        // Função para fazer a requisição assíncrona
+        async function fetchAlbums() {
+            try {
+                const response = await fetch('http://localhost:3000/albuns');
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Erro ao carregar os dados do arquivo JSON:', error);
+            }
+        }
+    
+        // Função para renderizar os álbuns na div 'album-container'
+        async function renderAlbums() {
+            const albumContainer = document.getElementById('album-container');
+            const albumsData = await fetchAlbums();
+    
+            if (albumsData) {
+                albumsData.forEach(album => {
+                    // Criar elementos HTML para cada álbum
+                    const albumElement = document.createElement('div');
+                    albumElement.classList.add('layout');
+    
+                    // Adicionar itens do álbum
+                    album.itens.forEach(itens => {
+                        const itemElement = document.createElement('div');
+                        itemElement.classList.add('albuns');
+                        itemElement.innerHTML = `
+                            <img src="${itens.capa}">
+                            <h3>${itens.titulo}</h3>
+                            <h5>${itens.descricao}</h5>
+                            <a href="${itens.detalhes.href || '#'}"><button onclick="${itens.detalhes.onclick}">${itens.detalhes.buttonText}</button></a>
+                        `;
+                        albumElement.appendChild(itemElement);
+                    });
+    
+                    // Adicionar o elemento do álbum à div 'album-container'
+                    albumContainer.appendChild(albumElement);
+                });
+            }
+        }
+    
+        // Chamar a função para renderizar os álbuns quando a página carregar
+        window.onload = renderAlbums;
+    </script>
+    
 </body>
 
 </html>

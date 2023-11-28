@@ -1,70 +1,335 @@
 {
-  "albuns": [
-      {
-          "id": 1,
-          "titulo": "Estádios de Futebol",
-          "capa": "/assets/img/estadio.jpg",
-          "descricao": "Os estádios mais famosos do Brasil",
-          "destaque": true,
-          "detalhes": {
-              "href": "estadio.html",
-              "buttonText": "MAIS DETALHES"
-          }
-      },
-      {
-          "id": 2,
-          "titulo": "Locais de Viagem",
-          "capa": "/assets/img/viagem.jpg",
-          "descricao": "As paisagens mais famosas do Brasil",
-          "destaque": false,
-          "detalhes": {
-              "href": "viagem.html",
-              "buttonText": "MAIS DETALHES"
-          }
-      },
-      {
-          "id": 3,
-          "titulo": "Personagens Marvel",
-          "capa": "/assets/img/marvel.jpg",
-          "descricao": "Os personagens mais famosos da Marvel",
-          "destaque": false,
-          "detalhes": {
-              "href": "marvel.html",
-              "buttonText": "MAIS DETALHES"
-          }
-      },
-      {
-          "id": 4,
-          "titulo": "Parques de Diversão",
-          "capa": "/assets/img/diversao.jpg",
-          "descricao": "Os melhores parques de diversão do Brasil",
-          "destaque": true,
-          "detalhes": {
-              "href": "diversao.html",
-              "buttonText": "MAIS DETALHES"
-          }
-      }
-  ],
-  
-  "destaques": [
-    {
-        "id": 1,
-        "idAlbum": 1,
-        "img": "/assets/img/estadio.jpg",
-        "texto": "Os estádios mais famosos do Brasil"
-    },
-    {
-        "id": 2,
-        "idAlbum": 4,
-        "img": "/assets/img/diversao.jpg",
-        "texto": "Os melhores parques de diversão do Brasil"
-    }
-  ],
-
-  "fotos": [
-
-  ]
+    "albuns": [
+        {
+            "id": 1,
+            "titulo": "Estádios de Futebol",
+            "descricao": "Os estádios mais famosos do Brasil",
+            "capa": "/assets/img/estadio.jpg",
+            "destaque": true,
+            "detalhes": {
+                "href": "estadio.html",
+                "buttonText": "MAIS DETALHES"
+            },
+            "itens": [
+                {
+                    "id": 1,
+                    "titulo": "Morumbi",
+                    "capa": "/assets/img/morumbi.jpg",
+                    "descricao": "Estádio do São Paulo",
+                    "detalhes": {
+                        "href" : "#morumbi",
+                        "onclick" : "abrirModal()",
+                        "buttonText": "MAIS DETALHES"
+                    },
+                    "informacoes": [
+                        {
+                            "id": 1,
+                            "rua": "Praça Roberto Gomes Pedrosa",
+                            "numero": 1,
+                            "bairro": "Morumbi",
+                            "cidade": "São Paulo",
+                            "estado": "SP",
+                            "cep": "05653-070",
+                            "ingresso": 100,
+                            "linkIngresso": "https://spfc.totalacesso.com"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "titulo": "Vila Belmiro",
+                    "capa": "/assets/img/vila.jpg",
+                    "descricao": "Estádio do Santos",
+                    "detalhes": {
+                        "href" : "#vila",
+                        "onclick" : "abrirModalVila()",
+                        "buttonText": "MAIS DETALHES"
+                    },
+                    "informacoes": [
+                        {
+                            "id": 1,
+                            "rua": "Rua Princesa Isabel",
+                            "numero": 1,
+                            "bairro": "Vila Belmiro",
+                            "cidade": "Santos",
+                            "estado": "SP",
+                            "cep": "11075-501",
+                            "ingresso": 50
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "titulo": "Mineirão",
+                    "capa": "/assets/img/mineirao-largejpg.jpg",
+                    "descricao": "Estádio do Cruzeiro",
+                    "detalhes": {
+                        "href" : "#mineiro",
+                        "onclick" : "abrirModalMineiro()",
+                        "buttonText": "MAIS DETALHES"
+                    },
+                    "informacoes": [
+                        {
+                            "id": 1,
+                            "rua": "Av. Antônio Abrahão Caram",
+                            "numero": 1001,
+                            "bairro": "São José",
+                            "cidade": "Belo Horizonte",
+                            "estado": "MG",
+                            "cep": "31275-000",
+                            "ingresso": 150
+                            
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "titulo": "Arena da Baixada",
+                    "capa": "/assets/img/Estadio-Atletico-Paranaense-Aerea.jpg",
+                    "descricao": "Estádio do Athletico Panaraense",
+                    "detalhes": {
+                        "href" : "#arena",
+                        "onclick" : "abrirModalArena()",
+                        "buttonText": "MAIS DETALHES"
+                    },
+                    "informacoes": [
+                        {
+                            "id": 1,
+                            "rua": "R. Buenos Aires",
+                            "numero": 1260,
+                            "bairro": "Água Verde",
+                            "cidade": "Curitiba",
+                            "estado": "PR",
+                            "cep": "80250-070",
+                            "ingresso": 200
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "titulo": "Locais para Viajar",
+            "artista": "As paisagem mais famosas do Brasil",
+            "capa": "/assets/img/viagem.jpg",
+            "destaque": true,
+            "detalhes": {
+                "href": "estadio.html",
+                "buttonText": "MAIS DETALHES"
+            },
+            "itens": [
+                {
+                    "id": 1,
+                    "titulo": "Arraial do Cabo",
+                    "descricao": "Rio de Janeiro, RJ",
+                    "informacoes": [
+                        {
+                            "id": 1,
+                            "cidade": "Arraial do Cabo",
+                            "estado": "RJ",
+                            "cep": "28930-000",
+                            "hospedagem": 250
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "titulo": "Praia da Joaquina",
+                    "descricao": "Florianópolis, SC",
+                    "informacoes": [
+                        {
+                            "id": 1,
+                            "bairro": "Lagoa da Conceição",
+                            "cidade": "Florianópolis",
+                            "estado": "SC",
+                            "hospedagem": 200
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "titulo": "Fernando de Noronha",
+                    "descricao": "Fernando de Noronha, PE",
+                    "informacoes": [
+                        {
+                            "id": 1,
+                            "cidade": "Fernando de Noronha",
+                            "estado": "PE",
+                            "hospedagem": 350
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "titulo": "Praia das Couves",
+                    "descricao": "Ubatuba, SP",
+                    "informacoes": [
+                        {
+                            "id": 1,
+                            "bairro": "Ilha das Couves Picinguaba",
+                            "cidade": "Ubatuba",
+                            "estado": "SP",
+                            "hospedagem": 180
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "titulo": "Personagens da Marvel",
+            "artista": "Os personagens mais fomosos da Marvel",
+            "capa": "/assets/img/marvel.jpg",
+            "destaque": true,
+            "detalhes": {
+                "href": "estadio.html",
+                "buttonText": "MAIS DETALHES"
+            },
+            "itens": [
+                {
+                    "id": 1,
+                    "titulo": "Homem Aranha",
+                    "descricao": "Queens, NY",
+                    "informacoes": [
+                        {
+                            "id": 1,
+                            "cidade": "Queens",
+                            "estado": "NY",
+                            "historia": "Qual é a verdadeira origem do Homem-Aranha? Homem-Aranha – Wikipédia, a enciclopédia livre Em 1962, com o sucesso do Quarteto Fantástico, Stan Lee lançou a ideia de um novo super-herói. Ele afirmou que a ideia do Homem-Aranha surgiu com o aumento do interesse de adolescentes em quadrinhos e com o desejo de criar um personagem com quem os jovens pudessem se identificar."
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "titulo": "Hulk",
+                    "descricao": "Dayton, OHIO",
+                    "informacoes": [
+                        {
+                            "id": 1,
+                            "cidade": "Dayton",
+                            "estado": "OHIO",
+                            "historia": "O alter-ego de Hulk é o cientista Bruce Banner, filho de Brian e Rebecca Banner. Brian, no entanto, sentia muito ciúmes do próprio filho e batia nele com frequência, principalmente quando bebia. Em um ataque de fúria extremo, acabou matando a própria esposa e foi preso. Bruce então, foi morar com a tia, Susan Banner. Ainda criança, o garoto se apresentou como um prodígio, graças a sua inteligência. Mais tarde, acabou estudando física nuclear no ensino superior e se especializou em radiação gama. Graças ao seu conhecimento, foi trabalhar no Departamento de Defesa Nuclear dos EUA. Foi nas pesquisas militares na base que conheceu seu grande amor, Betty Ross, e desenvolveu a bomba de raios gama que mudou sua vida."
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "titulo": "Homem de Ferro",
+                    "descricao": "Malibu, CA",
+                    "informacoes": [
+                        {
+                            "id": 1,
+                            "cidade": "Malibu",
+                            "estado": "CA",
+                            "historia": "Com poucos anos de trabalho, Tony transformou a empresa num gigante complexo bilionário. Trabalhando principalmente com investimento em armamento e munições, ele acabou fazendo parte de uma apresentação no Vietnã. Durante o conflito militar no país, Tony acabou sendo vítima de um ataque de granada, mas sobreviveu. Apesar disso, ficou com estilhaços de explosivo próximos ao seu coração. Ao mesmo tempo, ele fora feito prisioneiro e forçado a desenvolver uma arma. Mas, ao invés de desenvolver a arma para seu sequestrador, Tony acabou criando um dispositivo que o mantivesse vivo. Logo após garantir sua sobrevivência, também criou a primeira versão da armadura do Homem de Ferro e escapou. Desde então, Tony aperfeiçoou e desenvolveu novas versões da armadura, sempre com destaque para cores vermelho e dourado. Durante o início de suas aventuras, Tony Stark dizia que o Homem de Ferro era seu guarda-costas. Na época, apenas sua secretária, Virginia “Pepper” Potts, e Harold “Happy” Hogan conheciam seu segredo."
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "titulo": "Feiticeira Scarlat",
+                    "descricao": "Sokovia, Russia",
+                    "informacoes": [
+                        {
+                            "id": 1,
+                            "cidade": "Sokovia",
+                            "estado": "Rússia",
+                            "historia": "É considerável que a Marvel fez uma mudança na origem dos personagens devido a uma disputa contratual com os direitos do X-men com a FOX. Onde qualquer personagem que se enquadre como mutante poderia ser usado pelo estúdio para alguma produção Live Action, já a Marvel pelo contrário, não poderia usar nenhuma citação ao X-men ou mutantes. Devido a esta linha contratual dos personagens entre mutantes e não mutantes, ficou estabelecido que os dois estúdios poderiam usar os gêmeos desde que a Marvel não os colocasse como mutantes, o que terminou com a compra da Fox pela Disney. Agora o estúdio poder usar todos personagens mutantes e outros livremente."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "titulo": "Parques de diversão",
+            "artista": "Os melhores parques de diversão do Brasil",
+            "capa": "/assets/img/diversao.jpg",
+            "destaque": true,
+            "detalhes": {
+                "href": "estadio.html",
+                "buttonText": "MAIS DETALHES"
+            },
+            "itens": [
+                {
+                    "id": 1,
+                    "titulo": "Beto Carrero",
+                    "descricao": "Penha, SC",
+                    "informacoes": [
+                        {
+                            "id": 1,
+                            "rua": "Rod. Beto Carrero World",
+                            "bairro": "Praia de Armação do Itapocorói",
+                            "cidade": "Penha",
+                            "estado": "SC",
+                            "cep": "88385-000",
+                            "ingresso": 120
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "titulo": "Hopi Hari",
+                    "descricao": "Vinhedo, SP",
+                    "informacoes": [
+                        {
+                            "id": 1,
+                            "rua": "Rod. dos Bandeirantes, km 72",
+                            "bairro": "Moinho",
+                            "cidade": "Vinhedo",
+                            "estado": "SP",
+                            "cep": "13288-390",
+                            "ingresso": 140
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "titulo": "Thermas dos Laranjais",
+                    "descricao": "Olímpia, SP",
+                    "informacoes": [
+                        {
+                            "id": 1,
+                            "cidade": "Olímpia",
+                            "estado": "SP",
+                            "cep": "15400-000",
+                            "ingresso": 150
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "titulo": "Beach Park",
+                    "descricao": "Fortaleza, CE",
+                    "informacoes": [
+                        {
+                            "id": 1,
+                            "rua": "Rua Porto das Dunas",
+                            "numero": 2734,
+                            "bairro": "Porto das Dunas",
+                            "cidade": "Aquiraz",
+                            "estado": "CE",
+                            "cep": "61700-000",
+                            "ingresso": 250
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "destaques": [
+        {
+            "id": 1,
+            "idAlbum": 1,
+            "img": "/assets/img/estadio.jpg",
+            "texto": "Os estádios mais famosos do Brasil"
+        },
+        {
+            "id": 2,
+            "idAlbum": 4,
+            "img": "/assets/img/diversao.jpg",
+            "texto": "Os melhores parques de diversão do Brasil"
+        }
+    ],
+    "fotos": []
 }
-
-
-
