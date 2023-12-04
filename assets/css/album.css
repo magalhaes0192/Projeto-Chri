@@ -705,3 +705,8 @@ h3.redes {
     }
 
 }
+
+.flex-detalhes{
+    display: flex;
+    flex-direction: column;
+}

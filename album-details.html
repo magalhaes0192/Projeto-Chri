@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/album.css">
+    <link rel="stylesheet" href="/assets/css/slick-album.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="/assets/js/detalhe.js"></script>
+    <script src="/assets/js/menu.js" defer></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <header id="header">
+        <div class="interface">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="/assets/img/logo.png" alt="Logo vinicius">
+                </a>
+            </div><!--logo-->
+
+
+            <div class="btn-abrir-menu" id="btn-menu">
+                <i class="bi bi-list"></i>
+            </div>
+
+            <div class="menu-mobile" id="menu-mobile">
+                <div class="btn-fechar" id="fechar">
+                    <i class="bi bi-x-lg"></i>
+                </div>
+
+                <nav>
+                    <ul>
+                        <li id="sl"><a href="#slide">Destaques</a></li>
+                        <li id="map"><a href="#mapa">Mapa</a></li>
+                        <li id="al"><a href="#album">Lista de Albuns</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="overlay-menu" id="overlay-menu"></div>
+            <nav class="menu-desktop">
+                <ul>
+                    <li><a href="#slide">Destaques</a></li>
+                    <li><a href="#mapa">Mapa</a></li>
+                    <li><a href="#album">Lista de Albuns</a></li>
+                </ul>
+            </nav>
+        </div><!--interface-->
+
+    </header>
+
+    <div class="interface" style="margin-top: 50px;" id="album-info">
+    </div>
+
+
+    <footer>
+        <div class="interface">
+            <h2 class="credit">CRÉDITOS </h2>
+            <div class="flex">
+                <section class="footer">
+                    <div class="albuns">
+                        <h3>Sobre</h3>
+                        <p class="sobre">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry' s standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            It has
+                            survived not only five centuries, but also the leap into electronic typesetting, remaining
+                            essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                            containing Lorem Ipsum passages, and more recently with desktop publishing software like
+                            Aldus
+                            PageMaker including versions of Lorem Ipsum.</p>
+                    </div>
+                    <div class="albuns">
+                        <h3>Autoria</h3>
+                        <ul class="ul">
+                            <li><img src="/assets/img/pessoa.jpg" alt=""></li>
+                            <li class="autoria">
+                                <p class="li"><span>Aluno:</span> Gustavo Chagas Ribeiro</p>
+                                <p class="li"><span>Curso:</span> Engenharia de software</p>
+                            </li>
+                        </ul>
+                        <ul class="ul1">
+                            <li>
+                                <h3>Redes Sociais:</h3>
+                            </li>
+                            <li class="btn-social" style="margin-left: 20px;"><a href="#"><button><i
+                                            class="bi bi-instagram"></i></button></a></li>
+                            <li class="btn-social"><a href="#"><button><i class="bi bi-twitter"></i></button></a></li>
+                            <li class="btn-social"><a href="#"><button><i class="bi bi-linkedin"></i></button></a></li>
+                        </ul>
+                    </div>
+                </section>
+            </div><!--flex-->
+        </div><!--interface-->
+    </footer><!--footer-->
+
+    <script src="/assets/js/slick.min.js" defer></script>
+
+    <script>
+        async function fetchAlbumDetails(albumId) {
+            try {
+                const response = await fetch(`http://localhost:3000/albuns/${albumId}`);
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Erro ao carregar os detalhes do álbum:', error);
+                return null;
+            }
+        }
+
+        async function fetchItemPhotos(itemId) {
+            try {
+                const response = await fetch(`http://localhost:3000/fotos?itemId=${itemId}`);
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Erro ao carregar as fotos do item:', error);
+                return null;
+            }
+        }
+
+        async function renderAlbumDetails() {
+            const albumInfoContainer = document.getElementById('album-info');
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const albumId = urlParams.get('albumId');
+            const itemId = urlParams.get('id');
+
+            if (albumId && itemId) {
+                const albumDetails = await fetchAlbumDetails(albumId);
+
+                if (albumDetails && albumDetails.itens && albumDetails.itens.length > 0) {
+                    // Encontrar o item correto dentro do álbum
+                    const itemDetails = albumDetails.itens.find(item => item.id === parseInt(itemId));
+
+                    if (itemDetails) {
+
+
+                        const itemPhotos = await fetchItemPhotos(itemId);
+
+                        if (itemPhotos && itemPhotos.length > 0) {
+                            const albumFlexElement = document.createElement('div');
+                            albumFlexElement.classList.add('flex-detalhes');
+                            // Cria um array de strings com as informações a serem exibidas
+                            const infoStrings = [];
+
+                            // Adiciona a informação de Localização se pelo menos uma propriedade estiver definida
+                        if (itemDetails.rua !== undefined || itemDetails.bairro !== undefined || itemDetails.cidade !== undefined || itemDetails.estado !== undefined || itemDetails.cep !== undefined) {
+                            infoStrings.push(`
+                                <h3>Localização</h3>
+                                <p>${itemDetails.rua !== undefined ? itemDetails.rua : ''}  ${itemDetails.bairro !== undefined ? itemDetails.bairro : ''} ${itemDetails.cidade !== undefined ? itemDetails.cidade : ''}  ${itemDetails.estado !== undefined ? itemDetails.estado : ''} ${itemDetails.cep !== undefined ? itemDetails.cep : ''}</p>
+                            `);
+}
+
+                            // Adiciona a informação de Valor do Ingresso se estiver definida
+                            if (itemDetails.ingresso !== undefined) {
+                                infoStrings.push(`
+                                    <h3>Valor do Ingresso</h3>
+                                    <p>Valor: R$${itemDetails.ingresso}</p>
+                                `);
+                            }
+
+                            // Adiciona a informação de Compre Ingresso se o link estiver definido
+                            if (itemDetails.linkIngresso) {
+                                infoStrings.push(`
+        <h3>Compre Ingresso</h3>
+        <a href="${itemDetails.linkIngresso}" target="_blank">
+            <p>Clique aqui para Comprar seu Ingresso</p>
+        </a>
+    `);
+                            }
+                            albumFlexElement.innerHTML = `
+                            <h1 class="morumbi">${itemDetails.titulo}</h1>
+                            <div class="col-100">
+                                <div class="slider-principal">
+                                    ${itemPhotos.map(photo => `<img src="${photo.img}" alt="">`).join('')}
+                                    ${itemPhotos.map(photo => `<img src="${photo.img2}" alt="">`).join('')}
+                                    ${itemPhotos.map(photo => `<img src="${photo.img3}" alt="">`).join('')}
+                                    ${itemPhotos.map(photo => `<img src="${photo.img4}" alt="">`).join('')}
+                                </div>
+                            </div>
+                            <div class="mapa">
+                                <iframe class="loca"
+                                    src="${itemDetails.mapa}"
+                                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                                <div class="local">
+                                    ${infoStrings.join('')}
+                                </div>
+                            </div>
+                        `;
+
+                            albumInfoContainer.appendChild(albumFlexElement);
+
+                            // Inicialize o slider após adicionar os elementos
+                            $('.slider-principal').slick({
+                                dots: true,
+                                infinite: true,
+                                speed: 500,
+                                slidesToShow: 1,
+                                adaptiveHeight: true,
+                                autoplay: true,
+                                autoplaySpeed: 2000
+                            });
+                        }
+                    } else {
+                        console.error('Item não encontrado no álbum.');
+                    }
+                } else {
+                    console.error('Não foram encontrados itens para o álbum com o ID especificado.');
+                }
+            } else {
+                console.error('ID do álbum ou do item não encontrado na URL.');
+            }
+        }
+
+        window.onload = renderAlbumDetails;
+    </script>
+
+
+    <script src="/assets/js/jquery.js"></script>
+    <script src="/assets/js/jquery-migrate.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+
+</body>
+
+</html>

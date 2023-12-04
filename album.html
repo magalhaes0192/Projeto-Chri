@@ -57,31 +57,13 @@
     </header>
 
     <section class="sobre" id="sobre">
-        <div class="interface">
-            <h2 class="titulo">Estádios de futebol no Brasil</h2>
-            <div class="flex">
-                <div class="img-sobre">
-                    <img src="/assets/img/estadio.jpg" alt="">
-                </div><!--img-sobre-->
-                <div class="txt-sobre">
-                    <h3>Descrição</h3>
-                    <p>Aqui você vai encontrar os melhores estádios para ir assistir um jogo de futebol e passar um
-                        tempo com a fámilia</p>
-                    <h3>Localização</h3>
-                    <iframe class="loca" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31792520.751230083!2d-73.12282941219478!3d-13.417096702422796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9c59c7ebcc28cf%3A0x295a1506f2293e63!2sBrasil!5e0!3m2!1spt-PT!2sbr!4v1701657434384!5m2!1spt-PT!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    <h3>Data de registro</h3>
-                    <p>24/09/2023</p>
-                </div><!--btn-social-->
-            </div><!--txt-sobre-->
-        </div><!--flex-->
-        </div><!--interface-->
     </section><!--sobre-->
 
     <section class="album" id="album">
         <div class="interface">
             <h2 class="titulo">LISTA DE ESTÁDIOS </h2>
             <div class="flex">
-                <section class="layout" id="album-container">
+                <section class="layout" id="album-items">
                 </section>
 
             </div><!--flex-->
@@ -260,50 +242,107 @@
 
     <script>
         // Função para fazer a requisição assíncrona
-        async function fetchAlbums() {
+        async function fetchAlbumDetails(albumId) {
             try {
-                const response = await fetch('http://localhost:3000/albuns');
+                // Substitua 'caminho/do/seu/arquivo/db.json' pelo caminho real do seu arquivo JSON
+                const response = await fetch(`http://localhost:3000/albuns/${albumId}`);
                 const data = await response.json();
                 return data;
             } catch (error) {
-                console.error('Erro ao carregar os dados do arquivo JSON:', error);
+                console.error('Erro ao carregar os detalhes do álbum:', error);
+                return null;
             }
         }
-    
-        // Função para renderizar os álbuns na div 'album-container'
-        async function renderAlbums() {
-            const albumContainer = document.getElementById('album-container');
-            const albumsData = await fetchAlbums();
-    
-            if (albumsData) {
-                albumsData.forEach(album => {
-                    // Criar elementos HTML para cada álbum
-                    const albumElement = document.createElement('div');
-                    albumElement.classList.add('layout');
-    
-                    // Adicionar itens do álbum
-                    album.itens.forEach(itens => {
+
+        async function renderAlbumDetails() {
+            const albumInfoContainer = document.getElementById('sobre');
+
+            // Obter o ID do álbum da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const albumId = urlParams.get('id');
+
+            // Verificar se o ID do álbum está presente na URL
+            if (albumId) {
+                const albumDetails = await fetchAlbumDetails(albumId);
+
+                if (albumDetails) {
+                    // Criar elementos HTML para os detalhes do álbum
+                    const albumFlexElement = document.createElement('div');
+                    albumFlexElement.classList.add('interface');
+                    albumFlexElement.innerHTML = `
+                    <div class="flex">
+                    <div class="img-sobre"><img src="${albumDetails.capa}"></div>
+                    <div class="txt-sobre">
+                        <h3>Descrição</h3>
+                        <p>${albumDetails.descricaoSobre}</p>
+                        <h3>Localização</h3>
+                        <iframe class="loca" src="${albumDetails.Localizacao}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <h3>Data de registro</h3>
+                        <p>${albumDetails.data}</p>
+                    </div>
+                    </div>
+                `;
+
+                    // Adicionar o contêiner de informações do álbum à div 'album-info'
+                    albumInfoContainer.appendChild(albumFlexElement);
+                } else {
+                    console.error('Não foi possível obter os detalhes do álbum.');
+                }
+            } else {
+                console.error('ID do álbum não encontrado na URL.');
+            }
+        }
+
+        // Função para renderizar os itens do álbum na div 'album-details'
+        async function renderAlbumItems() {
+            const albumDetailsContainer = document.getElementById('album-items');
+
+            // Obter o ID do álbum da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const albumId = urlParams.get('id');
+
+            // Verificar se o ID do álbum está presente na URL
+            if (albumId) {
+                const albumDetails = await fetchAlbumDetails(albumId);
+
+                if (albumDetails && albumDetails.itens && albumDetails.itens.length > 0) {
+                    // Criar elementos HTML para cada item do álbum
+                    const itemsContainer = document.createElement('div');
+                    itemsContainer.classList.add('layout');
+
+                    albumDetails.itens.forEach(item => {
                         const itemElement = document.createElement('div');
                         itemElement.classList.add('albuns');
                         itemElement.innerHTML = `
-                            <img src="${itens.capa}">
-                            <h3>${itens.titulo}</h3>
-                            <h5>${itens.descricao}</h5>
-                            <a href="${itens.detalhes.href || '#'}"><button onclick="${itens.detalhes.onclick}">${itens.detalhes.buttonText}</button></a>
+                            <img src="${item.capa}" alt="${item.titulo}">
+                            <h3>${item.titulo}</h3>
+                            <h5>${item.descricao}</h5>
+                            <a href="album-details.html?albumId=${albumId}&id=${item.id}"><button>Mais detalhes</button></a>
+
                         `;
-                        albumElement.appendChild(itemElement);
+
+                        // Adicionar o elemento do item ao contêiner de itens
+                        itemsContainer.appendChild(itemElement);
                     });
-    
-                    // Adicionar o elemento do álbum à div 'album-container'
-                    albumContainer.appendChild(albumElement);
-                });
+
+                    // Adicionar o contêiner de itens à div 'album-details'
+                    albumDetailsContainer.appendChild(itemsContainer);
+                } else {
+                    console.error('Não foram encontrados itens para o álbum com o ID especificado.');
+                }
+            } else {
+                console.error('ID do álbum não encontrado na URL.');
             }
         }
-    
-        // Chamar a função para renderizar os álbuns quando a página carregar
-        window.onload = renderAlbums;
+        window.onload = function () {
+            renderAlbumDetails();
+            renderAlbumItems();
+        }
     </script>
-    
+
+
+
+
 </body>
 
 </html>
